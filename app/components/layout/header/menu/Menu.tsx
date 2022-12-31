@@ -1,9 +1,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
+
+import styles from './Menu.module.scss'
 import MenuItem from './menu-item/MenuItem'
 import { menu } from './menu.data'
-import styles from './Menu.module.scss'
 
 const Menu: FC = () => {
 	return (

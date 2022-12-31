@@ -8,11 +8,11 @@
 
 			> li {
 				> a {
-					@apply text-black cursor-pointer font-bold no-underline uppercase tracking-widest relative;
+					@apply relative cursor-pointer font-bold uppercase tracking-widest text-black no-underline;
 
 					&::after {
 						content: '';
-						@apply w-0 absolute left-0 -bottom-3 h-0.5 bg-black transition-all duration-300;
+						@apply absolute left-0 -bottom-3 h-0.5 w-0 bg-black transition-all duration-300;
 					}
 
 					&:hover::after {

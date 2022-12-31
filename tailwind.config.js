@@ -8,7 +8,8 @@ const constants = {
 	'light-grey': '#D9D8D4',
 	'dark-green': '#018860',
 	beige: '#A8A59B',
-	'light-green': '#E5F4EF'
+	'light-green': '#E5F4EF',
+	red: '#CB4648'
 }
 module.exports = {
 	content: ['./pages/**/*.{js,ts,jsx,tsx}', './app/**/*.{js,ts,jsx,tsx}'],
