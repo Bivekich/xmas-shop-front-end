@@ -1,9 +1,13 @@
-import Layout from '../app/components/layout/Layout'
+import Layout from '@/../app/components/layout/Layout'
+import Catalog from '@/../app/components/ui/catalog/Catalog'
+import { FC } from 'react'
 
-export default function Home() {
+const Home: FC = () => {
 	return (
-		<div className=''>
-			<Layout />
-		</div>
+		<Layout>
+			<Catalog />
+		</Layout>
 	)
 }
+
+export default Home

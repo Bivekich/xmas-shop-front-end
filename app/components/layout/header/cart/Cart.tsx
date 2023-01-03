@@ -1,5 +1,5 @@
-import { useTypedSelector } from '@/../app/hooks/useTypedSelector'
-import { ICartItem } from '@/../app/types/cart.interface'
+import { useCart } from '@/../app/hooks/useCart'
+import { formatToCurrency } from '@/../app/utils/format-to-currency'
 import {
 	Button,
 	Drawer,
@@ -15,13 +15,12 @@ import { FC, useRef, useState } from 'react'
 import styles from './Cart.module.scss'
 import CartItem from './cart-item/CartItem'
 
-const Cart: FC<{ item: ICartItem }> = item => {
+const Cart: FC = () => {
 	const [isOpen, setIsOpen] = useState(false)
 	const btnRef = useRef<HTMLButtonElement>(null)
 
-	const cart = useTypedSelector(state => state.cart.items)
+	const { cart, total } = useCart()
 
-	// TODO: Add redux
 	return (
 		<div className={styles['wrapper-cart']}>
 			<button
@@ -29,7 +28,7 @@ const Cart: FC<{ item: ICartItem }> = item => {
 				onClick={() => setIsOpen(!isOpen)}
 				ref={btnRef}
 			>
-				<span className={styles.badge}>1</span>
+				<span className={styles.badge}>{cart.length}</span>
 				<span className={styles.text}>MY BASKET</span>
 			</button>
 
@@ -47,9 +46,11 @@ const Cart: FC<{ item: ICartItem }> = item => {
 
 						<DrawerBody>
 							<div className={styles.cart}>
-								{cart.map(item => (
-									<CartItem key={item.id} item={item} />
-								))}
+								{cart.length ? (
+									cart.map(item => <CartItem key={item.id} item={item} />)
+								) : (
+									<div>Basket is empty!</div>
+								)}
 							</div>
 						</DrawerBody>
 
@@ -60,7 +61,7 @@ const Cart: FC<{ item: ICartItem }> = item => {
 						>
 							<div className={styles.footer}>
 								<div>Total:</div>
-								<div>$100</div>
+								<div>{formatToCurrency(total)}</div>
 							</div>
 							<Button colorScheme='green'>Checkout</Button>
 						</DrawerFooter>

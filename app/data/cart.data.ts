@@ -10,7 +10,7 @@ export const cart: ICartItem[] = [
 	},
 	{
 		id: 2,
-		quantity: 2,
+		quantity: 1,
 		product: products[1]
 	}
 ]
